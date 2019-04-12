@@ -1,6 +1,28 @@
 extends layout
 
 block content
-  h1= message
-  h2= error.status
-  pre #{error.stack}
+      //  Intro 
+      section.intro
+        header
+          h1= error.status
+          p= message
+          ul.actions
+            li
+              a.arrow.scrolly(href='#error-stack')
+                span.label Details
+        .content
+          span.image.fill(data-position='center')
+            img(src='images/btc-usd.jpg', alt='btc-usd')
+      //  Section 
+      section#error-stack
+        header
+          h3 Error Details
+        .content
+          p
+            | Error 
+            strong Stack
+          h4 Dump
+          pre
+            code #{error.stack}
+
+block scripts

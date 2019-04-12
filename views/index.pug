@@ -1,15 +1,6 @@
-doctype html
-html
-  head
-    title Coinbase 24 Hour Volume Report
-    meta(charset='utf-8')
-    meta(name='viewport', content='width=device-width,initial-scale=1,user-scalable=no')
-    meta(name='description', content)
-    meta(name='keywords', content)
-    link(rel='stylesheet', href='stylesheets/main.css')
-  body.is-preload
-    //  Wrapper 
-    #wrapper
+extends layout
+
+block content
       //  Intro 
       section.intro
         header
@@ -57,14 +48,12 @@ html
                 tr
                   td(colspan='2')
                   td 100.00
-          span.image.main
-            img(src='images/one-hundred-dollars.jpg', alt='one-hundred-dollars')
           h4 Regenerate Summary
           p
             | Regenerate the Coinbase Prime 
             strong product volume summary
             | .
-          form(method='post', action='#')
+          form(method='post', action='javascript:void(0);')
             .fields
               .field
                 label(for='rest-api-server') REST API Server
@@ -82,16 +71,6 @@ html
                 input.primary(type='submit', value='Submit')
               li
                 input(type='reset', value='Reset')
-      //  Copyright 
-      .copyright
-        | © Useful Coin LLC. All rights reserved. Design: 
-        a(href='https://html5up.net') HTML5 UP
-        | .
-    //  Scripts 
-    script(src='javascripts/jquery.min.js')
-    script(src='javascripts/jquery.scrolly.min.js')
-    script(src='javascripts/browser.min.js')
-    script(src='javascripts/breakpoints.min.js')
-    script(src='javascripts/util.js')
-    script(src='javascripts/main.js')
+
+block scripts
     script(src='javascripts/ticks.js')
