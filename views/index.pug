@@ -1,0 +1,193 @@
+doctype html
+html
+  head
+    title Coinbase 24 Hour Volume Report
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width,initial-scale=1,user-scalable=no')
+    meta(name='description', content)
+    meta(name='keywords', content)
+    link(rel='stylesheet', href='stylesheets/main.css')
+  body.is-preload
+    //  Wrapper 
+    #wrapper
+      //  Intro 
+      section.intro
+        header
+          h1 Volume Report
+          p
+            | Report of the trading volume in the last 24 hours on 
+            a(href='https://prime.coinbase.com') Coinbase Prime
+            |  using the 
+            a(href='https://twitter.com/usefulcoinllc') @usefulcoinllc
+            |  account.
+          ul.actions
+            li
+              a.arrow.scrolly(href='#product-summary')
+                span.label Next
+        .content
+          span.image.fill(data-position='center')
+            img(src='images/liquidity.jpg', alt='liquidity')
+      //  Section 
+      section#product-summary
+        header
+          h3 Product Summary
+        .content
+          p
+            | Coinbase Prime 
+            strong product volume summary
+            |  denominated in US dollars sourced from the Coinbase Prime websocket server.
+          h4 Summary
+          .table-wrapper
+            table.alt
+              thead
+                tr
+                  th Product
+                  th Price
+                  th Volume
+              tbody
+                tr
+                  td Item One
+                  td Ante turpis integer aliquet porttitor.
+                  td 29.99
+                tr
+                  td Item Two
+                  td Vis ac commodo adipiscing arcu aliquet.
+                  td 19.99
+                tr
+                  td Item Three
+                  td Morbi faucibus arcu accumsan lorem.
+                  td 29.99
+                tr
+                  td Item Four
+                  td Vitae integer tempus condimentum.
+                  td 19.99
+                tr
+                  td Item Five
+                  td Ante turpis integer aliquet porttitor.
+                  td 29.99
+              tfoot
+                tr
+                  td(colspan='2')
+                  td 100.00
+          span.image.main
+            img(src='images/one-hundred-dollars.jpg', alt='one-hundred-dollars')
+          h4 Regenerate Summary
+          p
+            | Regenerate the Coinbase Prime 
+            strong product volume summary
+            | .
+          form(method='post', action='#')
+            .fields
+              .field
+                label(for='websocket-server') Websocket Server
+                select#websocket-server(name='websocket-server')
+                  option(value='wss://ws-feed.prime.coinbase.com') Production
+                  option(value='wss://ws-feed-public.sandbox.prime.coinbase.com') Sandbox
+              .field.half
+                input#order-low(type='radio', name='liquidity-order')
+                label(for='order-low') Lowest Volume First
+              .field.half
+                input#order-high(type='radio', name='liquidity-order', checked)
+                label(for='order-high') Highest Volume First
+            ul.actions
+              li
+                input.primary(type='submit', value='Submit')
+              li
+                input(type='reset', value='Reset')
+      //  Section 
+      section#trading-volume
+        header
+          h3 Trading Volume
+        .content
+          p
+            | Coinbase Prime 
+            strong detailed product volume report
+            |  denominated in US dollars. The report is generated using data gleaned from both Coinbase Prime websocket and REST API servers.
+          h4 24 Hour Trading Volume
+          .table-wrapper
+            table
+              thead
+                tr
+                  th Name
+                  th Description
+                  th Price
+              tbody
+                tr
+                  td Item One
+                  td Ante turpis integer aliquet porttitor.
+                  td 29.99
+                tr
+                  td Item Two
+                  td Vis ac commodo adipiscing arcu aliquet.
+                  td 19.99
+                tr
+                  td Item Three
+                  td Morbi faucibus arcu accumsan lorem.
+                  td 29.99
+                tr
+                  td Item Four
+                  td Vitae integer tempus condimentum.
+                  td 19.99
+                tr
+                  td Item Five
+                  td Ante turpis integer aliquet porttitor.
+                  td 29.99
+              tfoot
+                tr
+                  td(colspan='2')
+                  td 100.00
+          span.image.main
+            img(src='images/btc-usd.jpg', alt='btc-usd')
+          h4 Regenerate Volume Report
+          p
+            | Regenerate the Coinbase Prime 
+            strong product volume summary
+            | .
+          form(method='post', action='#')
+            .fields
+              .field.half
+                label(for='rest-api-server') REST API Server
+                select#rest-api-server(name='rest-api-server')
+                  option(value='https://api.prime.coinbase.com') Production
+                  option(value='https://api-public.sandbox.prime.coinbase.com') Sandbox
+              .field.half
+                label(for='websocket-server') Websocket Server
+                select#websocket-server(name='websocket-server')
+                  option(value='wss://ws-feed.prime.coinbase.com') Production
+                  option(value='wss://ws-feed-public.sandbox.prime.coinbase.com') Sandbox
+              .field
+                label(for='risk-ratio') Risk Ratio
+                select#risk-ratio(name='risk-ratio')
+                  option(value='0.01') 1%
+                  option(value='0.02') 2%
+                  option(value='0.03') 3%
+              .field
+                label(for='quote-currency') Quote Currency
+                select#quote-currency(name='quote-currency')
+                  option(value='ALL') ALL
+                  option(value='USD') USD
+                  option(value='USDC') USDC
+                  option(value='BTC') BTC
+              .field.half
+                input#order-low(type='radio', name='liquidity-order')
+                label(for='order-low') Lowest Volume First
+              .field.half
+                input#order-high(type='radio', name='liquidity-order', checked)
+                label(for='order-high') Highest Volume First
+            ul.actions
+              li
+                input.primary(type='submit', value='Submit')
+              li
+                input(type='reset', value='Reset')
+      //  Copyright 
+      .copyright
+        | © Useful Coin LLC. All rights reserved. Design: 
+        a(href='https://html5up.net') HTML5 UP
+        | .
+    //  Scripts 
+    script(src='javascripts/jquery.min.js')
+    script(src='javascripts/jquery.scrolly.min.js')
+    script(src='javascripts/browser.min.js')
+    script(src='javascripts/breakpoints.min.js')
+    script(src='javascripts/util.js')
+    script(src='javascripts/main.js')
