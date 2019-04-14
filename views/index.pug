@@ -13,11 +13,22 @@ block content
             |  account.
           ul.actions
             li
-              a.arrow.scrolly(href='#product-summary')
+              a.arrow.scrolly(href='#product-id-list')
                 span.label Next
         .content
           span.image.fill(data-position='center')
             img(src='images/liquidity.jpg', alt='liquidity')
+      //  Section 
+      section#product-id-list
+        header
+          h3 Product List
+        .content
+          p
+            | Coinbase Prime 
+            strong currency pairs
+            |  listed by Coinbase Product ID.
+          h5#currencypairs Currency Pairs
+          ul.alt#productidlist
       //  Section 
       section#product-summary
         header
@@ -26,28 +37,20 @@ block content
           p
             | Coinbase Prime 
             strong product volume summary
-            |  denominated in US dollars sourced from the Coinbase Prime websocket server.
+            |  denominated in US dollars.
           h4 Summary
           .table-wrapper
             table.alt
               thead
                 tr
                   th Product
-                  th Volume
-                  th Ask Price
-              tbody
-                tr
-                  td#productid
-                  td#productvolume
-                  td#productaskprice
-                tr
-                  td Item Five
-                  td Ante turpis integer aliquet porttitor.
-                  td 29.99
+                  th Relative Volume
+                  th Absolute Volume
+              tbody#summarytablebody
               tfoot
                 tr
                   td(colspan='2')
-                  td 100.00
+                  td#total-volume
           h4 Regenerate Summary
           p
             | Regenerate the Coinbase Prime 
@@ -60,6 +63,12 @@ block content
                 select#rest-api-server(name='rest-api-server')
                   option(value='https://api.prime.coinbase.com', selected) Production
                   option(value='https://api-public.sandbox.prime.coinbase.com') Sandbox
+              .field
+                label(for='quote-currency') Quote Currency
+                select#quote-currency(name='quote-currency')
+                  option(value='USD', selected) USD
+                  option(value='USDC') USDC
+                  option(value='BTC') BTC
               .field.half
                 input#order-low(type='radio', name='liquidity-order')
                 label(for='order-low') Lowest Volume First
@@ -73,4 +82,5 @@ block content
                 input(type='reset', value='Reset')
 
 block scripts
+    script(src='javascripts/products.js')
     script(src='javascripts/ticks.js')
