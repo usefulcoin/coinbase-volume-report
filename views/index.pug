@@ -29,13 +29,13 @@ block content
             |  report ordered by Coinbase quote currency.
           h5#currencypairvolumes Currency Pair Volumes
           .table-wrapper
-            table
+            table.sortable
               thead
                 tr
                   th Product
-                  th Daily 
-                  th Average
-                  th Monthly
+                  th.sorttable_numeric Daily 
+                  th.sorttable_numeric Average
+                  th.sorttable_numeric Monthly
               tbody#productvolumestablebody
           ul.actions
             li
@@ -56,13 +56,13 @@ block content
             |  It also includes bid/ask spreads as a percentage of the present ask price.
           h5#currencyprices Currency Prices
           .table-wrapper
-            table
+            table.sortable
               thead
                 tr
-                  th Price
+                  th.sorttable_numeric Price
                   th Product
-                  th Range
-                  th Spread
+                  th.sorttable_numeric Range
+                  th.sorttable_numeric Spread
               tbody#currencypricestablebody
           ul.actions
             li
@@ -128,3 +128,4 @@ block content
 block scripts
     script(src='javascripts/products.js')
     script(src='javascripts/ticks.js')
+    script(src='javascripts/sorttable.js')
