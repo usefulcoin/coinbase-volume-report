@@ -104,14 +104,14 @@ document.addEventListener('DOMContentLoaded', function (event) {
       // inserted data into DOM.
 
       // identify new elements.
-      newprice.setAttribute("id", products[i].id + '-price');
-      newproductvolumeid.setAttribute("id", products[i].id + '-volumeid');
-      newproductpriceid.setAttribute("id", products[i].id + '-priceid');
-      newrange.setAttribute("id", products[i].id + '-range');
-      newspread.setAttribute("id", products[i].id + '-spread');
-      newdailyvolume.setAttribute("id", products[i].id + '-dailyvolume');
-      newaveragedailyvolume.setAttribute("id", products[i].id + '-averagedailyvolume');
-      newmonthlyvolume.setAttribute("id", products[i].id + '-monthlyvolume');
+      newprice.setAttribute("id", products[i].id + 'price');
+      newproductvolumeid.setAttribute("id", products[i].id + 'volumeid');
+      newproductpriceid.setAttribute("id", products[i].id + 'priceid');
+      newrange.setAttribute("id", products[i].id + 'range');
+      newspread.setAttribute("id", products[i].id + 'spread');
+      newdailyvolume.setAttribute("id", products[i].id + 'dailyvolume');
+      newaveragedailyvolume.setAttribute("id", products[i].id + 'averagedailyvolume');
+      newmonthlyvolume.setAttribute("id", products[i].id + 'monthlyvolume');
       // identified new elements.
 
     } // updated the DOM.
@@ -168,12 +168,12 @@ document.addEventListener('DOMContentLoaded', function (event) {
 	  // formatted data.
 
 	  // populate DOM.
-	  document.querySelector('#' + productid + '-price').textContent = price;
-	  document.querySelector('#' + productid + '-range').textContent = percentpricerange + '%';
-	  document.querySelector('#' + productid + '-spread').textContent = percentagepricespread + '%';
-	  document.querySelector('#' + productid + '-dailyvolume').textContent = '$' + Number(dailyvolume).toLocaleString();
-	  document.querySelector('#' + productid + '-averagedailyvolume').textContent = '$' + Number(averagedailyvolume).toLocaleString();
-	  document.querySelector('#' + productid + '-monthlyvolume').textContent = '$' + Number(monthlyvolume).toLocaleString();
+	  document.querySelector('#' + productid + 'price').textContent = price;
+	  document.querySelector('#' + productid + 'range').textContent = percentpricerange + '%';
+	  document.querySelector('#' + productid + 'spread').textContent = percentagepricespread + '%';
+	  document.querySelector('#' + productid + 'dailyvolume').textContent = '$' + Number(dailyvolume).toLocaleString();
+	  document.querySelector('#' + productid + 'averagedailyvolume').textContent = '$' + Number(averagedailyvolume).toLocaleString();
+	  document.querySelector('#' + productid + 'monthlyvolume').textContent = '$' + Number(monthlyvolume).toLocaleString();
 	  // populated DOM.
   
       } // handled ticker message.
