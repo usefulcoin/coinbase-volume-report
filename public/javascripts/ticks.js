@@ -2,10 +2,10 @@ document.addEventListener('DOMContentLoaded', function (event) {
   async function getticks(event) {
   
     // define consts.
-    const selectedrestapiserver = document.getElementById('rest-api-server').value;
-    const selectedcurrency = document.getElementById('quote-currency').value;
-    const ascending = document.getElementById('order-low').checked;
-    const descending = document.getElementById('order-high').checked;
+    const selectedrestapiserver = document.getElementById('restapiserver').value;
+    const selectedcurrency = document.getElementById('quotecurrency').value;
+    const ascending = document.getElementById('orderlow').checked;
+    const descending = document.getElementById('orderhigh').checked;
     // defined key static (const) variables.
   
     function filter (array, filters) { // filter an array of objects.
@@ -40,6 +40,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
   
     // define variables.
     let summarytablebody = document.getElementById('summarytablebody');
+    let tablebodytotal = document.getElementById('totalvolume');
     let productlist = await unsignedrestapirequest ( 'GET', '/products' );
     let btcusdtick = await unsignedrestapirequest ( 'GET', '/products/BTC-USD/ticker' );
     let quotecurrencyfilter = { quote_currency: [selectedcurrency] }
@@ -48,7 +49,8 @@ document.addEventListener('DOMContentLoaded', function (event) {
     let ticker = new Array(); 
     // defined variables.
 
-    summarytablebody.innerHTML = ""; /* clear the table body to prepare it for new data */
+    summarytablebody.innerHTML = ''; /* clear the table body to prepare it for new data */
+    tablebodytotal.innerHTML = ''; /* clear the table body to prepare it for new data */
 
     for ( let i=0 ; i < selectedproducts.length ; i++ ) { // create ticker.
 
@@ -98,21 +100,21 @@ document.addEventListener('DOMContentLoaded', function (event) {
       // insert data into DOM.
       newproductid.appendChild(document.createTextNode(selectedproductid));
       newproductpercentvolume.appendChild(document.createTextNode(selectedproductpercentvolume.toFixed(2) + '%'));
-      newproductvolume.appendChild(document.createTextNode(selectedproductvolume));
-      document.getElementById('total-volume').innerHTML = Number(totalvolume.toFixed(2)).toLocaleString() + ' USD';
+      newproductvolume.appendChild(document.createTextNode('$' + selectedproductvolume));
+      document.getElementById('totalvolume').innerHTML = Number(totalvolume.toFixed(2)).toLocaleString() + ' USD';
       // inserted data into DOM.
 
     } // updated DOM.
 
     // update dropdown box options to include volume.
-    document.getElementById('quote-currency').options[document.getElementById('quote-currency').selectedIndex].text = selectedcurrency + ' [' + Number(totalvolume.toFixed(2)).toLocaleString() + ' USD]';
+    document.getElementById('quotecurrency').options[document.getElementById('quotecurrency').selectedIndex].text = selectedcurrency + ' [' + Number(totalvolume.toFixed(2)).toLocaleString() + ' USD]';
     // updated dropdown box options to include volume.
 	  
   };
   
   getticks(); /* run getticks after the DOM loads */
-  document.querySelector('#rest-api-server').addEventListener('change', getticks); /* run getticks again if user makes a request */
-  document.querySelector('#quote-currency').addEventListener('change', getticks); /* run getticks again if user makes a request */
-  document.querySelector('#order-high').addEventListener('click', getticks); /* run getticks again if user makes a request */
-  document.querySelector('#order-low').addEventListener('click', getticks); /* run getticks again if user makes a request */
+  document.querySelector('#restapiserver').addEventListener('change', getticks); /* run getticks again if user makes a request */
+  document.querySelector('#quotecurrency').addEventListener('change', getticks); /* run getticks again if user makes a request */
+  document.querySelector('#orderhigh').addEventListener('click', getticks); /* run getticks again if user makes a request */
+  document.querySelector('#orderlow').addEventListener('click', getticks); /* run getticks again if user makes a request */
 });

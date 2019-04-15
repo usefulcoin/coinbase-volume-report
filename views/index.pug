@@ -4,33 +4,75 @@ block content
       //  Intro 
       section.intro
         header
-          h1 Volume Report
+          h1 Coinbase Price & Volume Report
           p
-            | Report of the trading volume in the last 24 hours on 
+            | Report of currency prices and trading volume in the last 24 hours on 
             a(href='https://prime.coinbase.com') Coinbase Prime
             |  using the 
             a(href='https://twitter.com/usefulcoinllc') @usefulcoinllc
             |  account.
           ul.actions
             li
-              a.arrow.scrolly(href='#product-id-list')
+              a.arrow.scrolly(href='#productvolumes')
                 span.label Next
         .content
           span.image.fill(data-position='center')
             img(src='images/liquidity.jpg', alt='liquidity')
       //  Section 
-      section#product-id-list
+      section#productvolumes
         header
-          h3 Product List
+          h3 Product Volumes
         .content
           p
             | Coinbase Prime 
-            strong currency pairs
-            |  listed by Coinbase Product ID.
-          h5#currencypairs Currency Pairs
-          ul.alt#productidlist
+            strong currency pair volume
+            |  report ordered by Coinbase quote currency.
+          h5#currencypairvolumes Currency Pair Volumes
+          .table-wrapper
+            table
+              thead
+                tr
+                  th Product
+                  th Daily 
+                  th Average
+                  th Monthly
+              tbody#productvolumestablebody
+          ul.actions
+            li
+              a.button.primary.large.scrolly(href='#productprices')
+                span.label Product Prices
+            li
+              a.button.large.scrolly(href='#productsummary')
+                span.label Product Summary
       //  Section 
-      section#product-summary
+      section#productprices
+        header
+          h3 Product Prices
+        .content
+          p
+            | Coinbase Prime 
+            strong currency price
+            |  report that includes daily trading range as a percentage of price. 
+            |  It also includes bid/ask spreads as a percentage of the present ask price.
+          h5#currencyprices Currency Prices
+          .table-wrapper
+            table
+              thead
+                tr
+                  th Price
+                  th Product
+                  th Range
+                  th Spread
+              tbody#currencypricestablebody
+          ul.actions
+            li
+              a.button.primary.large.scrolly(href='#productsummary')
+                span.label Product Summary
+            li
+              a.button.large.scrolly(href='#productvolumes')
+                span.label Product Volumes
+      //  Section 
+      section#productsummary
         header
           h3 Product Summary
         .content
@@ -50,7 +92,7 @@ block content
               tfoot
                 tr
                   td(colspan='2')
-                  td#total-volume
+                  td#totalvolume
           h4 Regenerate Summary
           p
             | Regenerate the Coinbase Prime 
@@ -59,27 +101,29 @@ block content
           form(method='post', action='javascript:void(0);')
             .fields
               .field
-                label(for='rest-api-server') REST API Server
-                select#rest-api-server(name='rest-api-server')
+                label(for='restapiserver') REST API Server
+                select#restapiserver(name='restapiserver')
                   option(value='https://api.prime.coinbase.com', selected) Production
                   option(value='https://api-public.sandbox.prime.coinbase.com') Sandbox
               .field
-                label(for='quote-currency') Quote Currency
-                select#quote-currency(name='quote-currency')
+                label(for='quotecurrency') Quote Currency
+                select#quotecurrency(name='quotecurrency')
                   option(value='USD', selected) USD
                   option(value='USDC') USDC
                   option(value='BTC') BTC
               .field.half
-                input#order-low(type='radio', name='liquidity-order')
-                label(for='order-low') Lowest Volume First
+                input#orderlow(type='radio', name='liquidityorder')
+                label(for='orderlow') Lowest Volume First
               .field.half
-                input#order-high(type='radio', name='liquidity-order', checked)
-                label(for='order-high') Highest Volume First
-            ul.actions
-              li
-                input.primary(type='submit', value='Submit')
-              li
-                input(type='reset', value='Reset')
+                input#orderhigh(type='radio', name='liquidityorder', checked)
+                label(for='orderhigh') Highest Volume First
+          ul.actions
+            li
+              a.button.primary.large.scrolly(href='#productvolumes')
+                span.label Product Volumes
+            li
+              a.button.large.scrolly(href='#productprices')
+                span.label Product Prices
 
 block scripts
     script(src='javascripts/products.js')
