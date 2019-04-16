@@ -3,6 +3,16 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "clean": "rm -rf dist/*",
+    "loadhtml": "pug views/*.pug --pretty --out dist",
+    "loadtherest": "cp -R public/* dist && cp public/images/favicon.ico dist/",
+    "prebuild": "yarn run clean",
+    "build:markup": "yarn run loadhtml",
+    "build:therest": "yarn run loadtherest",
+    "build": "yarn run build:therest && yarn run build:markup -s",
+    "deploy:dev": "s3-cli sync ./dist/ s3://coinbase-volume-report-development/",
+    "deploy:www": "s3-cli sync ./dist/ s3://coinbase-volume-report-production/",
+    "deploy": "yarn run deploy:dev && yarn run deploy:www",
     "start": "node ./bin/www",
     "devstart": "nodemon ./bin/www"
   },
@@ -23,6 +33,8 @@
   "author": "Munair Simpson",
   "license": "MIT",
   "devDependencies": {
-    "nodemon": "^1.18.11"
+    "nodemon": "^1.18.11",
+    "pug-cli": "^1.0.0-alpha6",
+    "s3-cli": "^0.13.0"
   }
 }
