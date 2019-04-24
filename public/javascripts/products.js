@@ -71,7 +71,6 @@ document.addEventListener('DOMContentLoaded', function (event) {
       let newproductvolumeid = newvolumerow.insertCell(0);
       let newdailyvolume = newvolumerow.insertCell(1);
       let newaveragedailyvolume = newvolumerow.insertCell(2);
-      let newmonthlyvolume = newvolumerow.insertCell(3);
       // defined variables for product volume new row.
 
       // define variables for new product price row.
@@ -79,7 +78,6 @@ document.addEventListener('DOMContentLoaded', function (event) {
       let newprice = newpricerow.insertCell(0);
       let newproductpriceid = newpricerow.insertCell(1);
       let newrange = newpricerow.insertCell(2);
-      let newspread = newpricerow.insertCell(3);
       // defined variables for new product price row.
 
       // define variables for data to be displayed in DOM.
@@ -89,7 +87,6 @@ document.addEventListener('DOMContentLoaded', function (event) {
       let spread = 0;
       let dailyvolume = 0;
       let averagedailyvolume = 0;
-      let monthlyvolume = 0;
       // defined variables for data to be displayed in DOM.
 
       // insert data into DOM.
@@ -100,7 +97,6 @@ document.addEventListener('DOMContentLoaded', function (event) {
       newspread.appendChild(document.createTextNode(spread));
       newdailyvolume.appendChild(document.createTextNode(dailyvolume));
       newaveragedailyvolume.appendChild(document.createTextNode(averagedailyvolume));
-      newmonthlyvolume.appendChild(document.createTextNode(monthlyvolume));
       // inserted data into DOM.
 
       // identify new elements.
@@ -111,7 +107,6 @@ document.addEventListener('DOMContentLoaded', function (event) {
       newspread.setAttribute("id", products[i].id + 'spread');
       newdailyvolume.setAttribute("id", products[i].id + 'dailyvolume');
       newaveragedailyvolume.setAttribute("id", products[i].id + 'averagedailyvolume');
-      newmonthlyvolume.setAttribute("id", products[i].id + 'monthlyvolume');
       // identified new elements.
 
     } // updated the DOM.
@@ -159,7 +154,6 @@ document.addEventListener('DOMContentLoaded', function (event) {
           let productid = jsondata.product_id; /* capture product id */
           let price = Number(jsondata.price).toFixed(2); /* capture price */
           let dailyvolume = Number(jsondata.volume_24h).toFixed(2); /* capture daily volume */
-          let monthlyvolume = Number(jsondata.volume_30d).toFixed(2); /* capture monthly volume */
           let averagedailyvolume = Number(Number(jsondata.volume_30d)/30).toFixed(2); /* capture daily volume */
           let pricerange = Number(Number(jsondata.high_24h) - Number(jsondata.low_24h)).toFixed(2); /* capture trading price range */
           let percentpricerange = Number( 100 * (Number(jsondata.high_24h) - Number(jsondata.low_24h)) / Number(jsondata.price) ).toFixed(2); /* capture percentage trading range at present price */
@@ -173,7 +167,6 @@ document.addEventListener('DOMContentLoaded', function (event) {
 	  document.querySelector('#' + productid + 'spread').textContent = percentagepricespread + '%';
 	  document.querySelector('#' + productid + 'dailyvolume').textContent = '$' + Number(dailyvolume).toLocaleString();
 	  document.querySelector('#' + productid + 'averagedailyvolume').textContent = '$' + Number(averagedailyvolume).toLocaleString();
-	  document.querySelector('#' + productid + 'monthlyvolume').textContent = '$' + Number(monthlyvolume).toLocaleString();
 	  // populated DOM.
   
       } // handled ticker message.
