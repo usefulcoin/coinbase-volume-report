@@ -78,6 +78,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
       let newprice = newpricerow.insertCell(0);
       let newproductpriceid = newpricerow.insertCell(1);
       let newrange = newpricerow.insertCell(2);
+      let newspread = newpricerow.insertCell(3);
       // defined variables for new product price row.
 
       // define variables for data to be displayed in DOM.
