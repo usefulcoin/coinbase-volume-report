@@ -1,6 +1,6 @@
 # Coinbase Price & Volume Report
 
-This repository builds a trading volume report for Coinbase Prime that can be run on an Amazon S3 Static Website. Read (here)[https://docs.aws.amazon.com/AmazonS3/latest/user-guide/static-website-hosting.html] for more information.
+This repository builds a trading volume report for Coinbase Prime that can be run on an Amazon S3 Static Website. Read [here](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/static-website-hosting.html) for more information.
 
 ## Node Modules and Dependencies
 
